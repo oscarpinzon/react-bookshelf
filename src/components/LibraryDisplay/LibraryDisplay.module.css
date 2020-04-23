@@ -11,19 +11,19 @@
   padding-left: 10px;
 }
 
-.main-header {
+.mainHeader {
   color: white;
   text-align: center;
   font-size: xxx-large;
 }
 
-.book-container {
+.bookContainer {
   display: flex;
   margin-bottom: auto;
   max-height: 80vh;
 }
 
-.new-book-btn {
+.newBookBtn {
   color: #fff !important;
   text-transform: uppercase;
   text-decoration: none;
@@ -39,7 +39,7 @@
   margin-bottom: 10vh;
 }
 
-.new-book-btn:hover {
+.newBookBtn:hover {
   background: #434343;
   letter-spacing: 1px;
   -webkit-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);

@@ -1,5 +1,5 @@
-import React from "react";
-import "./LibraryDisplay.css";
+import React, { Component } from "react";
+import styles from "./LibraryDisplay.module.css";
 
 const books = [
   { title: "1984", author: "George Orwell", read: true },
@@ -10,17 +10,17 @@ const books = [
   },
 ];
 
-class LibraryDisplay extends React.Component {
+class LibraryDisplay extends Component {
   render() {
     return (
-      <div className="container">
-        <h1 className="main-header">My Library</h1>
-        <div className="book-container">
+      <div className={styles.container}>
+        <h1 className={styles.mainHeader}>My Library</h1>
+        <div className={styles.bookContainer}>
           <p>Books</p>
           <p>Books</p>
           <p>Books</p>
         </div>
-        <button className="new-book-btn" type="submit">
+        <button className={styles.newBookBtn} type="submit">
           Add Book
         </button>
       </div>
