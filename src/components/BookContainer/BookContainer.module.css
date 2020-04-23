@@ -1,0 +1,43 @@
+.bookContainer {
+  position: relative;
+  background-color: whitesmoke;
+  text-align: center;
+  padding: 10px;
+  font-size: large;
+}
+
+.bookContainer:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  bottom: 15px;
+  right: 5px;
+  width: 50%;
+  top: 80%;
+  box-shadow: 0px 13px 10px black;
+  transform: rotate(4deg);
+}
+
+.deleteBtn {
+  color: #fff !important;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: #ed3330;
+  padding: 10px;
+  border-radius: 5px;
+  display: inline-block;
+  border: none;
+  transition: all 0.4s ease 0s;
+  font-size: large;
+  font-weight: bold;
+  margin: 0 auto;
+}
+
+.deleteBtn:hover {
+  background: #434343;
+  letter-spacing: 1px;
+  -webkit-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
+  -moz-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
+  box-shadow: 5px 40px -10px rgba(0, 0, 0, 0.57);
+  transition: all 0.4s ease 0s;
+}

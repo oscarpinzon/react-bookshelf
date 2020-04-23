@@ -15,19 +15,23 @@
   color: white;
   text-align: center;
   font-size: xxx-large;
+  margin-bottom: 10px;
 }
 
 .bookContainer {
-  display: flex;
   margin-bottom: auto;
-  max-height: 80vh;
+  max-height: 90vh;
+  overflow: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
 }
 
 .newBookBtn {
   color: #fff !important;
   text-transform: uppercase;
   text-decoration: none;
-  background: #ed3330;
+  background: green;
   padding: 20px;
   border-radius: 5px;
   display: inline-block;
@@ -36,7 +40,8 @@
   font-size: xx-large;
   width: 50%;
   margin: 0 auto;
-  margin-bottom: 10vh;
+  margin-bottom: 20px;
+  margin-top: 10px;
 }
 
 .newBookBtn:hover {
