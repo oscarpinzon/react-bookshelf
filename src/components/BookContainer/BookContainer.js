@@ -2,6 +2,24 @@ import React, { Component } from "react";
 import styles from "./BookContainer.module.css";
 
 class BookContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      read: this.props.book.read,
+      id: this.props.book.id,
+    };
+    this.handleChange = this.handleChange.bind(this);
+    this.updateLibrary = this.updateLibrary.bind(this);
+  }
+
+  handleChange() {
+    this.setState({ read: !this.state.read }, this.updateLibrary);
+  }
+
+  updateLibrary() {
+    this.props.toggleRead(this.state);
+  }
+
   render() {
     return (
       <div className={styles.bookContainer}>
@@ -16,11 +34,15 @@ class BookContainer extends Component {
           type="checkbox"
           className={styles.readCheck}
           checked={this.props.book.read}
-          readOnly
+          onChange={this.handleChange}
         />
-        <p className={styles.paragraph}>{this.props.book.read.toString()}</p>
         <br />
-        <button className={styles.deleteBtn}>Delete</button>
+        <button
+          className={styles.deleteBtn}
+          onClick={() => this.props.removeBook(this.props.book.id)}
+        >
+          Delete
+        </button>
       </div>
     );
   }

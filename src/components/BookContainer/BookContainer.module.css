@@ -35,10 +35,7 @@
   font-weight: bold;
 }
 
-.paragraph {
-  font-size: large;
-}
-
 .readCheck {
   transform: scale(1.5);
+  margin-bottom: 20px;
 }

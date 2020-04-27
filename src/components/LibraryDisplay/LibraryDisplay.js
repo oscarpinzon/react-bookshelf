@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import styles from "./LibraryDisplay.module.css";
 import BookContainer from "../BookContainer/BookContainer";
 import Modal from "../NewBookModal/NewBookModal";
+import { v4 as uuidv4 } from "uuid";
+import { update } from "ramda";
 
 class LibraryDisplay extends Component {
   constructor(props) {
@@ -11,37 +13,25 @@ class LibraryDisplay extends Component {
       newBookAuthor: "",
       newBookReadStatus: false,
       books: [
-        { title: "1984", author: "George Orwell", read: true },
+        { title: "1984", author: "George Orwell", read: true, id: uuidv4() },
         {
           title: "The Gulag Archipielago",
           author: "Aleksandr Solzhenitsyn",
           read: false,
+          id: uuidv4(),
         },
         {
           title: "The Gulag Archipielago",
           author: "Aleksandr Solzhenitsyn",
           read: true,
-        },
-        {
-          title: "The Gulag Archipielago",
-          author: "Aleksandr Solzhenitsyn",
-          read: false,
-        },
-        {
-          title: "The Gulag Archipielago",
-          author: "Aleksandr Solzhenitsyn",
-          read: false,
-        },
-        {
-          title: "The Gulag Archipielago",
-          author: "Aleksandr Solzhenitsyn",
-          read: true,
+          id: uuidv4(),
         },
       ],
       showModal: false,
     };
     this.handleChange = this.handleChange.bind(this);
-    this.handleCheckbox = this.handleCheckbox.bind(this);
+    this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
+    this.toggleReadStatus = this.toggleReadStatus.bind(this);
   }
 
   showModal = () => {
@@ -58,11 +48,15 @@ class LibraryDisplay extends Component {
       title: this.state.newBookTitle,
       author: this.state.newBookAuthor,
       read: this.state.newBookReadStatus,
+      id: uuidv4(),
     };
-    console.log(newBook);
     let books = this.state.books;
     books.push(newBook);
     this.setState({ books: books });
+    this.hideModal();
+    this.setState({ newBookTitle: "" });
+    this.setState({ newBookAuthor: "" });
+    this.setState({ newBookReadStatus: "" });
   };
 
   handleChange(event) {
@@ -71,9 +65,28 @@ class LibraryDisplay extends Component {
     this.setState({ [propertyName]: value });
   }
 
-  handleCheckbox(event) {
+  handleCheckboxChange(event) {
     this.setState({
       newBookReadStatus: event.target.checked === true ? true : false,
+    });
+  }
+
+  removeBook(id) {
+    const newState = this.state;
+    const index = newState.books.findIndex((a) => a.id === id);
+    if (index === -1) return;
+    newState.books.splice(index, 1);
+    this.setState(newState);
+  }
+
+  toggleReadStatus(state) {
+    const objIndex = this.state.books.findIndex((book) => book.id === state.id);
+    this.setState({
+      books: update(
+        objIndex,
+        { ...this.state.books[objIndex], read: state.read },
+        this.state.books
+      ),
     });
   }
 
@@ -81,8 +94,15 @@ class LibraryDisplay extends Component {
     return (
       <div className={styles.container}>
         <div className={styles.bookContainer}>
-          {this.state.books.map((book, index) => {
-            return <BookContainer key={index} book={book} />;
+          {this.state.books.map((book) => {
+            return (
+              <BookContainer
+                toggleRead={this.toggleReadStatus}
+                key={book.id}
+                book={book}
+                removeBook={this.removeBook.bind(this)}
+              />
+            );
           })}
         </div>
         <Modal show={this.state.show} handleClose={this.hideModal}>
@@ -113,7 +133,7 @@ class LibraryDisplay extends Component {
               type="checkbox"
               name="newBookReadStatus"
               checked={this.state.newBookReadStatus}
-              onChange={this.handleCheckbox}
+              onChange={this.handleCheckboxChange}
             ></input>
             <br />
             <input type="submit" value="Submit" className="submit"></input>
