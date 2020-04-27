@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/react-bookshelf/static/css/main.c77dd72c.chunk.css",
+    "main.js": "/react-bookshelf/static/js/main.1732eadc.chunk.js",
+    "main.js.map": "/react-bookshelf/static/js/main.1732eadc.chunk.js.map",
+    "runtime-main.js": "/react-bookshelf/static/js/runtime-main.49270fd0.js",
+    "runtime-main.js.map": "/react-bookshelf/static/js/runtime-main.49270fd0.js.map",
+    "static/js/2.77c247e6.chunk.js": "/react-bookshelf/static/js/2.77c247e6.chunk.js",
+    "static/js/2.77c247e6.chunk.js.map": "/react-bookshelf/static/js/2.77c247e6.chunk.js.map",
+    "index.html": "/react-bookshelf/index.html",
+    "precache-manifest.e227cf2e48e04beb1d46fb27ebc33e1e.js": "/react-bookshelf/precache-manifest.e227cf2e48e04beb1d46fb27ebc33e1e.js",
+    "service-worker.js": "/react-bookshelf/service-worker.js",
+    "static/css/main.c77dd72c.chunk.css.map": "/react-bookshelf/static/css/main.c77dd72c.chunk.css.map",
+    "static/js/2.77c247e6.chunk.js.LICENSE.txt": "/react-bookshelf/static/js/2.77c247e6.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/react-bookshelf/static/media/background.fe84d99d.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.49270fd0.js",
+    "static/js/2.77c247e6.chunk.js",
+    "static/css/main.c77dd72c.chunk.css",
+    "static/js/main.1732eadc.chunk.js"
+  ]
+}
