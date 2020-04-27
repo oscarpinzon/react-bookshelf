@@ -5,6 +5,10 @@ import Modal from "../NewBookModal/NewBookModal";
 import { v4 as uuidv4 } from "uuid";
 import { update } from "ramda";
 
+if (!JSON.parse(localStorage.getItem("books"))) {
+  localStorage.setItem("books", JSON.stringify([]));
+}
+
 class LibraryDisplay extends Component {
   constructor(props) {
     super(props);
@@ -34,6 +38,11 @@ class LibraryDisplay extends Component {
     this.toggleReadStatus = this.toggleReadStatus.bind(this);
   }
 
+  componentDidMount() {
+    const storedBooks = JSON.parse(localStorage.getItem("books"));
+    this.setState({ books: storedBooks });
+  }
+
   showModal = () => {
     this.setState({ show: true });
   };
@@ -56,7 +65,9 @@ class LibraryDisplay extends Component {
     this.hideModal();
     this.setState({ newBookTitle: "" });
     this.setState({ newBookAuthor: "" });
-    this.setState({ newBookReadStatus: "" });
+    this.setState({ newBookReadStatus: false });
+    console.log(JSON.stringify(this.state.books));
+    localStorage.setItem("books", JSON.stringify(this.state.books));
   };
 
   handleChange(event) {
@@ -77,6 +88,7 @@ class LibraryDisplay extends Component {
     if (index === -1) return;
     newState.books.splice(index, 1);
     this.setState(newState);
+    localStorage.setItem("books", JSON.stringify(this.state.books));
   }
 
   toggleReadStatus(state) {
