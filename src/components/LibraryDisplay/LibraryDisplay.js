@@ -66,7 +66,6 @@ class LibraryDisplay extends Component {
     this.setState({ newBookTitle: "" });
     this.setState({ newBookAuthor: "" });
     this.setState({ newBookReadStatus: false });
-    console.log(JSON.stringify(this.state.books));
     localStorage.setItem("books", JSON.stringify(this.state.books));
   };
 
